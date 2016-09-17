@@ -14,6 +14,7 @@
 		9571DCDD1D8CAA5B00D267E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCDB1D8CAA5B00D267E9 /* Main.storyboard */; };
 		9571DCDF1D8CAA5B00D267E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCDE1D8CAA5B00D267E9 /* Assets.xcassets */; };
 		9571DCE21D8CAA5B00D267E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCE01D8CAA5B00D267E9 /* LaunchScreen.storyboard */; };
+		9571DCEA1D8CB71800D267E9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571DCE91D8CB71800D267E9 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9571DCDE1D8CAA5B00D267E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9571DCE11D8CAA5B00D267E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9571DCE31D8CAA5B00D267E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9571DCE91D8CB71800D267E9 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				9571DCD51D8CAA5B00D267E9 /* GameScene.sks */,
 				9571DCD71D8CAA5B00D267E9 /* GameScene.swift */,
 				9571DCD91D8CAA5B00D267E9 /* GameViewController.swift */,
+				9571DCE91D8CB71800D267E9 /* Helper.swift */,
 				9571DCDB1D8CAA5B00D267E9 /* Main.storyboard */,
 				9571DCDE1D8CAA5B00D267E9 /* Assets.xcassets */,
 				9571DCE01D8CAA5B00D267E9 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				9571DCD81D8CAA5B00D267E9 /* GameScene.swift in Sources */,
 				9571DCDA1D8CAA5B00D267E9 /* GameViewController.swift in Sources */,
 				9571DCD41D8CAA5B00D267E9 /* AppDelegate.swift in Sources */,
+				9571DCEA1D8CB71800D267E9 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
