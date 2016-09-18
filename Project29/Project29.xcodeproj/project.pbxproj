@@ -15,6 +15,7 @@
 		9571DCDF1D8CAA5B00D267E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCDE1D8CAA5B00D267E9 /* Assets.xcassets */; };
 		9571DCE21D8CAA5B00D267E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCE01D8CAA5B00D267E9 /* LaunchScreen.storyboard */; };
 		9571DCEA1D8CB71800D267E9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571DCE91D8CB71800D267E9 /* Helper.swift */; };
+		9571DCEC1D8CC3DA00D267E9 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571DCEB1D8CC3DA00D267E9 /* BuildingNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9571DCE11D8CAA5B00D267E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9571DCE31D8CAA5B00D267E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9571DCE91D8CB71800D267E9 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		9571DCEB1D8CC3DA00D267E9 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				9571DCD31D8CAA5B00D267E9 /* AppDelegate.swift */,
 				9571DCD51D8CAA5B00D267E9 /* GameScene.sks */,
+				9571DCEB1D8CC3DA00D267E9 /* BuildingNode.swift */,
 				9571DCD71D8CAA5B00D267E9 /* GameScene.swift */,
 				9571DCD91D8CAA5B00D267E9 /* GameViewController.swift */,
 				9571DCE91D8CB71800D267E9 /* Helper.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9571DCD81D8CAA5B00D267E9 /* GameScene.swift in Sources */,
+				9571DCEC1D8CC3DA00D267E9 /* BuildingNode.swift in Sources */,
 				9571DCDA1D8CAA5B00D267E9 /* GameViewController.swift in Sources */,
 				9571DCD41D8CAA5B00D267E9 /* AppDelegate.swift in Sources */,
 				9571DCEA1D8CB71800D267E9 /* Helper.swift in Sources */,
