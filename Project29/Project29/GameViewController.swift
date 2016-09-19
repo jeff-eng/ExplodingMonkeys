@@ -11,9 +11,22 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    var currentGame: GameScene!
+    
+    @IBOutlet weak var angleSlider: UISlider!
+    @IBOutlet weak var angleLabel: UILabel!
+    @IBOutlet weak var velocitySlider: UISlider!
+    @IBOutlet weak var velocityLabel: UILabel!
+    @IBOutlet weak var launchButton: UIButton!
+    @IBOutlet weak var playerNumber: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Calling these methods on initial loading of app
+        angleChanged(angleSlider)
+        velocityChanged(velocitySlider)
+        
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
@@ -27,6 +40,11 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+            
+            // sets the currentGame property to the initial game scene
+            currentGame = scene
+            // makes sure the scene knows about the view controller
+            currentGame.viewController = self
         }
     }
 
@@ -49,5 +67,47 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // Changing slider will change the angle label text to the current value of the slider
+    @IBAction func angleChanged(sender: AnyObject) {
+        angleLabel.text = "Angle: \(Int(angleSlider.value))°"
+    }
+    
+    // Changing slider will change the velocity label text to the current value of the slider
+    @IBAction func velocityChanged(sender: AnyObject) {
+        velocityLabel.text = "Velocity: \(Int(velocitySlider.value))"
+    }
+    
+    @IBAction func launch(sender: AnyObject) {
+        // Need to hide the user interface after player taps launch button so they can't fire again until ready. Also need to tell game scene to launch banana using current angle and velocity
+        
+        angleSlider.hidden = true
+        angleLabel.hidden = true
+        
+        velocitySlider.hidden = true
+        velocityLabel.hidden = true
+        
+        launchButton.hidden = true
+        
+        currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
+        
+    }
+    
+    func activatePlayer(number: Int) {
+        if number == 1 {
+            playerNumber.text = "<<< PLAYER ONE"
+        } else {
+            playerNumber.text = "PLAYER TWO >>>"
+        }
+        
+        //Unhide the user interface controls and labels
+        angleSlider.hidden = false
+        angleLabel.hidden = false
+        
+        velocitySlider.hidden = false
+        velocityLabel.hidden = false
+        
+        launchButton.hidden = false
     }
 }
