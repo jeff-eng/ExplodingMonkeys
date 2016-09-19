@@ -14,7 +14,7 @@ enum CollisionTypes: UInt32 {
     case player = 4
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     weak var viewController: GameViewController!
     
@@ -30,6 +30,8 @@ class GameScene: SKScene {
         
         createBuildings()
         createPlayers()
+        
+        physicsWorld.contactDelegate = self
     }
     
     func createBuildings() {
@@ -131,9 +133,35 @@ class GameScene: SKScene {
             banana.physicsBody?.applyImpulse(impulse)
         }
         
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
         
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
         
-        
+        if let firstNode = firstBody.node {
+            if let secondNode = secondBody.node {
+                if firstNode.name == "banana" && secondNode.name == "building" {
+                    bananaHit(building: secondNode as! BuildingNode, atPoint: contact.contactPoint)
+                }
+                
+                if firstNode.name == "banana" && secondNode == "player1" {
+                    destroy(player: player1)
+                }
+                
+                if firstNode.name == "banana" && secondNode == "player2" {
+                    destroy(player: player2)
+                }
+            }
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
