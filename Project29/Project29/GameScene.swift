@@ -42,6 +42,10 @@ class GameScene: SKScene {
         }
     }
     
+    func launch(angle angle: Int, velocity: Int) {
+        
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
     }
