@@ -16,6 +16,9 @@
 		9571DCE21D8CAA5B00D267E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCE01D8CAA5B00D267E9 /* LaunchScreen.storyboard */; };
 		9571DCEA1D8CB71800D267E9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571DCE91D8CB71800D267E9 /* Helper.swift */; };
 		9571DCEC1D8CC3DA00D267E9 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571DCEB1D8CC3DA00D267E9 /* BuildingNode.swift */; };
+		9571DCEE1D90958800D267E9 /* Assets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCED1D90958800D267E9 /* Assets.atlas */; };
+		9571DCF11D90972C00D267E9 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCEF1D90972C00D267E9 /* hitBuilding.sks */; };
+		9571DCF21D90972C00D267E9 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9571DCF01D90972C00D267E9 /* hitPlayer.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		9571DCE31D8CAA5B00D267E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9571DCE91D8CB71800D267E9 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		9571DCEB1D8CC3DA00D267E9 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		9571DCED1D90958800D267E9 /* Assets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Assets.atlas; sourceTree = "<group>"; };
+		9571DCEF1D90972C00D267E9 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		9571DCF01D90972C00D267E9 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +76,11 @@
 				9571DCE91D8CB71800D267E9 /* Helper.swift */,
 				9571DCDB1D8CAA5B00D267E9 /* Main.storyboard */,
 				9571DCDE1D8CAA5B00D267E9 /* Assets.xcassets */,
+				9571DCED1D90958800D267E9 /* Assets.atlas */,
 				9571DCE01D8CAA5B00D267E9 /* LaunchScreen.storyboard */,
 				9571DCE31D8CAA5B00D267E9 /* Info.plist */,
+				9571DCEF1D90972C00D267E9 /* hitBuilding.sks */,
+				9571DCF01D90972C00D267E9 /* hitPlayer.sks */,
 			);
 			path = Project29;
 			sourceTree = "<group>";
@@ -134,10 +143,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9571DCF21D90972C00D267E9 /* hitPlayer.sks in Resources */,
 				9571DCD61D8CAA5B00D267E9 /* GameScene.sks in Resources */,
 				9571DCE21D8CAA5B00D267E9 /* LaunchScreen.storyboard in Resources */,
+				9571DCEE1D90958800D267E9 /* Assets.atlas in Resources */,
 				9571DCDF1D8CAA5B00D267E9 /* Assets.xcassets in Resources */,
 				9571DCDD1D8CAA5B00D267E9 /* Main.storyboard in Resources */,
+				9571DCF11D90972C00D267E9 /* hitBuilding.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +316,7 @@
 				9571DCE81D8CAA5B00D267E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
