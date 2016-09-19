@@ -11,6 +11,8 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    var currentGame: GameScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,11 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+            
+            // sets the currentGame property to the initial game scene
+            currentGame = scene
+            // makes sure the scene knows about the view controller
+            currentGame.viewController = self
         }
     }
 
