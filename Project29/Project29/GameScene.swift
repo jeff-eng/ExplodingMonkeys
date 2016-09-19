@@ -74,6 +74,10 @@ class GameScene: SKScene {
         player2.position = CGPoint(x: player2Building.position.x, y: player2Building.position.y + ((player2Building.size.height + player2.size.height) / 2))
     }
     
+    func degreeToRadian(degrees: Int) -> Double {
+        return Double(degrees) * M_PI / 180.0
+    }
+    
     func launch(angle angle: Int, velocity: Int) {
         
     }
