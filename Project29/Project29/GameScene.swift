@@ -72,6 +72,7 @@ class GameScene: SKScene {
         
         let player2Building = buildings[buildings.count - 2]
         player2.position = CGPoint(x: player2Building.position.x, y: player2Building.position.y + ((player2Building.size.height + player2.size.height) / 2))
+        addChild(player2)
     }
     
     func degreeToRadian(degrees: Int) -> Double {
