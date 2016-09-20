@@ -204,7 +204,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // Method that handles creating explosion, deleting the banana and changing players
-    func bananaHit(building: BuildingNode, atPoint contactPoint: CGPoint) {
+    func bananaHit(building building: BuildingNode, atPoint contactPoint: CGPoint) {
         // Convert collision contact point into coordinates relative to the building node
         let buildingLocation = convertPoint(contactPoint, toNode: building)
         building.hitAtPoint(buildingLocation)
@@ -229,6 +229,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
    
     override func update(currentTime: CFTimeInterval) {
-     
+        // Handling scenario where banana doesn't hit a building or player and goes off screen, which normally would stall the game.
+        if banana != nil {
+            if banana.position.y < -1000 {
+                banana.removeFromParent()
+                banana = nil
+                
+                changePlayer()
+            }
+        }
     }
 }
