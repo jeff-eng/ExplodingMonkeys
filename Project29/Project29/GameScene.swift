@@ -14,7 +14,7 @@ enum CollisionTypes: UInt32 {
     case player = 4
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     weak var viewController: GameViewController!
     
@@ -30,6 +30,8 @@ class GameScene: SKScene {
         
         createBuildings()
         createPlayers()
+        
+        physicsWorld.contactDelegate = self
     }
     
     func createBuildings() {
@@ -131,16 +133,110 @@ class GameScene: SKScene {
             banana.physicsBody?.applyImpulse(impulse)
         }
         
-        
-        
-        
     }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if let firstNode = firstBody.node {
+            if let secondNode = secondBody.node {
+                if firstNode.name == "banana" && secondNode.name == "building" {
+                    bananaHit(building: secondNode as! BuildingNode, atPoint: contact.contactPoint)
+                }
+                
+                if firstNode.name == "banana" && secondNode == "player1" {
+                    destroy(player1)
+                }
+                
+                if firstNode.name == "banana" && secondNode == "player2" {
+                    destroy(player2)
+                }
+            }
+        }
+    }
+    
+    func destroy(player: SKSpriteNode) {
+        // Create the SpriteKit explosion animation
+        let explosion = SKEmitterNode(fileNamed: "hitPlayer")!
+        explosion.position = player.position
+        addChild(explosion)
+        
+        // Remove the player and banana from the scene when banana hits the player
+        player.removeFromParent()
+        banana?.removeFromParent()
+        
+        RunAfterDelay(2) { [unowned self] in
+            
+            // Transitions to a new Game Scene
+            let newGame = GameScene(size: self.size)
+            newGame.viewController = self.viewController
+            self.viewController.currentGame = newGame
+            
+            // Calls changePlayer method when player is destroyed
+            self.changePlayer()
+            // Transfers control of the game to the other player
+            newGame.currentPlayer = self.currentPlayer
+            
+            // Create smooth transition to the next game
+            let transition = SKTransition.doorwayWithDuration(1.5)
+            self.view?.presentScene(newGame, transition: transition)
+        }
+    }
+    
+    func changePlayer() {
+        // Set new game's currentPlayer property to our own currentPlayer property so whoever died gets the first shot
+        if currentPlayer == 1 {
+            currentPlayer = 2
+        } else {
+            currentPlayer = 1
+        }
+        
+        viewController.activatePlayer(currentPlayer)
+    }
+    
+    // Method that handles creating explosion, deleting the banana and changing players
+    func bananaHit(building building: BuildingNode, atPoint contactPoint: CGPoint) {
+        // Convert collision contact point into coordinates relative to the building node
+        let buildingLocation = convertPoint(contactPoint, toNode: building)
+        building.hitAtPoint(buildingLocation)
+        
+        // create explosion
+        let explosion = SKEmitterNode(fileNamed: "hitBuilding")!
+        explosion.position = contactPoint
+        addChild(explosion)
+        
+        // delete banana
+        banana.name = ""
+        banana?.removeFromParent()
+        banana = nil
+        
+        // change players
+        changePlayer()
+    }
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
     }
    
     override func update(currentTime: CFTimeInterval) {
-     
+        // Handling scenario where banana doesn't hit a building or player and goes off screen, which normally would stall the game.
+        if banana != nil {
+            if banana.position.y < -1000 {
+                banana.removeFromParent()
+                banana = nil
+                
+                changePlayer()
+            }
+        }
     }
 }
