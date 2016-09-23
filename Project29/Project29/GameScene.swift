@@ -26,26 +26,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var currentPlayer = 1
     
     override func didMoveToView(view: SKView) {
+        // Set the background color of the scene to a dark blue color (for the night sky)
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         
         createBuildings()
         createPlayers()
         
+        // assign 'self' to be delegate of scene's physics world so we get notified of collisions
         physicsWorld.contactDelegate = self
     }
     
     func createBuildings() {
+        // start off the sceeen to the left
         var currentX: CGFloat = -15
         
         while currentX < 1024 {
             let size = CGSize(width: RandomInt(min: 2, max: 4) * 40, height: RandomInt(min: 300, max: 600))
             currentX += size.width + 2
             
+            // Create instances of the building objects, position it, call setup(give it name, physics, texture), and add the building node to the scene
             let building = BuildingNode(color: UIColor.redColor(), size: size)
             building.position = CGPoint(x: currentX - (size.width / 2), y: size.height / 2)
             building.setup()
             addChild(building)
             
+            // Store each instance of the building node in the array
             buildings.append(building)
         }
     }
@@ -60,6 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player1.physicsBody!.dynamic = false
         
         let player1Building = buildings[1]
+        // Positions player at the top of the building
         player1.position = CGPoint(x: player1Building.position.x, y: player1Building.position.y + ((player1Building.size.height + player1.size.height) / 2))
         addChild(player1)
         
@@ -215,6 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(explosion)
         
         // delete banana
+        // the name property is set to empty string to remove possibility of second collision if banana hits two buildings simultaneously
         banana.name = ""
         banana?.removeFromParent()
         banana = nil

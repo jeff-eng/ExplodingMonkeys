@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Calling these methods on initial loading of app
+        // Calling these methods on initial loading of app to display their default values
         angleChanged(angleSlider)
         velocityChanged(velocitySlider)
         
@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             
-            // sets the currentGame property to the initial game scene
+            // sets the currentGame property to the initial game scene; get direct access to the Game Scene whenever we need it
             currentGame = scene
             // makes sure the scene knows about the view controller
             currentGame.viewController = self
@@ -94,6 +94,7 @@ class GameViewController: UIViewController {
         
     }
     
+    // Update the interface to display who's turn it is, and then re-display the controls
     func activatePlayer(number: Int) {
         if number == 1 {
             playerNumber.text = "<<< PLAYER ONE"
@@ -101,7 +102,7 @@ class GameViewController: UIViewController {
             playerNumber.text = "PLAYER TWO >>>"
         }
         
-        //Unhide the user interface controls and labels
+        //Unhide the user interface controls and labels for next player's turn
         angleSlider.hidden = false
         angleLabel.hidden = false
         
