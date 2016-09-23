@@ -1,6 +1,8 @@
 # ExplodingMonkeys
 Repo following Project 29: Exploding Monkeys at Hacking with Swift
 
+![Exploding Monkeys Game Screenshot](project29-screenshot.png)
+
 ## Concepts learned/practiced
 * Learned:
   * Scene transitions
